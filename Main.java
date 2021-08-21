@@ -1,4 +1,4 @@
-package com.company;
+package ru.nsu.ccfit.desyatkov.lab1;
 
 import javax.naming.NamingException;
 import java.util.logging.Logger;
