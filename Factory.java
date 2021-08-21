@@ -1,37 +1,49 @@
-import blocks.Operation;
+package ru.nsu.ccfit.desyatkov.lab2;
 
-import java.io.IOException;
-import java.util.Properties;
+import com.company.instructions.Instruction;
 
-public class Factory {
-    private final Properties properties = new Properties();
-    private static Factory factory = null;
+import java.io.*;
+import java.util.TreeMap;
 
-    private Factory() throws IOException {
-        var input = Factory.class.getResourceAsStream("inputOperations");
-
-        if (input != null) {
-            properties.load(input);
-            input.close();
-        }
-    }
-
-    public static Factory getInstance() throws IOException {
-        if (factory == null) {
-            synchronized (Factory.class){
-                if(factory == null){
-                    factory = new Factory();
+public class InstructionFactory {
+    private final TreeMap<String, Class> instructionNames;
+    public InstructionFactory(String configFile) {
+        instructionNames = new TreeMap<>();
+        try {
+            File file = new File(configFile);
+            FileReader fileReader = new FileReader(file);
+            BufferedReader buf = new BufferedReader(fileReader);
+            String line = buf.readLine();
+            while (line != null) {
+                try 
+                {
+                    String[] separateWords;
+                    String delimiter = " ";
+                    separateWords = line.split(delimiter);
+                    instructionNames.put(separateWords[0], Class.forName(Instruction.class.getPackageName() + "." + separateWords[1]));
+                    line = buf.readLine();
+                }
+                catch (ClassNotFoundException e) {
+                    e.printStackTrace();
                 }
             }
         }
-        return factory;
+        catch (FileNotFoundException fileNotFoundErr) {
+            fileNotFoundErr.printStackTrace();
+        }
+        catch (IOException ioErr) {
+            ioErr.printStackTrace();
+        }
     }
-
-    public Operation createOperation(String operationName) throws Exception {
-        Operation currentOperation;
-        var classOfOperation = Class.forName(properties.getProperty(operationName));
-        var objectInstance = classOfOperation.getDeclaredConstructor().newInstance();
-        currentOperation = (Operation) objectInstance;
-        return currentOperation;
+    public Instruction makeInstruction(String Name) {
+        Instruction newInst = null;
+        
+        try {
+            newInst = (Instruction) instructionNames.get(Name).newInstance();
+        }
+        catch (InstantiationException | IllegalAccessException er) {
+            er.printStackTrace();
+        }
+        return newInst;
     }
 }
