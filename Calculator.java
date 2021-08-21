@@ -1,5 +1,5 @@
 package ru.nsu.ccfit.desyatkov.lab2;
-import ru.nsu.ccfit.desyatkov.lab2.instructionexception.InstructionException;
+import ru.nsu.ccfit.desyatkov.lab2.exception.InstructionException;
 import ru.nsu.ccfit.desyatkov.lab2.instructions.Instruction;
 import ru.nsu.ccfit.desyatkov.lab2.instructions.*;
 
