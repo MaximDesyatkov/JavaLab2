@@ -13,7 +13,7 @@ public class Calculator {
     CalculatorContext ctx = new CalculatorContext();
     Calculator(String[] args) {
 
-        InstructionFactory Calculator = new InstructionFactory("C:\\Users\\User\\IdeaProjects\\Lab2\\InstructionConfig.txt");
+        InstructionFactory Calculator = new InstructionFactory("C:\\Users\\User\\IdeaProjects\\Lab2\\ru\\nsu\\ccfit\\desyatkov\\lab2\\Config.txt");
         try {
             if (args.length == 0) {
                 Scanner in = new Scanner(System.in);
