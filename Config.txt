@@ -1,0 +1,10 @@
+DEFINE Define
+PUSH Push
+PRINT Print
+POP Pop
+PLUS Plus
+- Minus
+* Multiple
+/ Division
+SQRT SQRT
+EXP EXP
