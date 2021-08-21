@@ -1,6 +1,6 @@
 package ru.nsu.ccfit.desyatkov.lab2;
 
-import com.company.instructions.Instruction;
+import ru.nsu.ccfit.desyatkov.lab2.instructions.Instruction;
 
 import java.io.*;
 import java.util.TreeMap;
