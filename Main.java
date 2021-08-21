@@ -1,7 +1,12 @@
-public class Main {
-    public static void main(String[] args) throws Exception {
-        Workflow workflow = new Workflow();
+package com.company;
 
-        workflow.run("C:\\Users\\User\\IdeaProjects\\Lab2\\input.txt");
+import javax.naming.NamingException;
+import java.util.logging.Logger;
+
+public class Main {
+    private static final Logger logger = Logger.getGlobal();
+    public static void main(String[] args) throws ClassNotFoundException {
+        //Class.forName("java.lang.Integer").;
+        Calculator Calculator = new Calculator(args);
     }
 }
