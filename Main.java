@@ -1,4 +1,4 @@
-package ru.nsu.ccfit.desyatkov.lab1;
+package ru.nsu.ccfit.desyatkov.lab2;
 
 import javax.naming.NamingException;
 import java.util.logging.Logger;
